@@ -1,8 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'firstScreen.dart';
 import 'package:sessionaldicegame/easyLevel.dart';
+import 'hard.dart';
 
 class levelScreen extends StatefulWidget {
   @override
@@ -13,8 +13,8 @@ class _levelScreenState extends State<levelScreen> {
   void easylevel(){
     Navigator.push(context, MaterialPageRoute(builder: (context) => simple()));
   }
-  void hardlevel(){
-    //Navigator.push(context, MaterialPageRoute(builder: (context) => hardlevel()));
+  void hard(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LevelHard()));
   }
   @override
   Widget build(BuildContext context) {
@@ -84,6 +84,7 @@ class _levelScreenState extends State<levelScreen> {
               height: 10,
             ),
             RawMaterialButton(
+              onPressed: hard,
               fillColor: Colors.purple,
               elevation: 5.0,
               child: Center(

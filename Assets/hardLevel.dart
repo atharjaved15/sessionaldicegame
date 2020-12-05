@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'LevelScreen.dart';
 
-class hardlevel extends StatefulWidget {
+class LevelHard extends StatefulWidget {
   @override
-  _hardlevelState createState() => _hardlevelState();
+  _LevelHardState createState() => _LevelHardState();
 }
 
-class _hardlevelState extends State<hardlevel> {
+class _LevelHardState extends State<LevelHard> {
   @override
   Widget build(BuildContext context) {
     return  Container(
