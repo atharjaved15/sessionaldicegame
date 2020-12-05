@@ -9,8 +9,8 @@ class _firstScreenState extends State<firstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Hello"),
+      backgroundColor: Colors.black87,
+      body: Column(
       ),
     );
   }
