@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sessionaldicegame/AboutUS.dart';
 import 'package:sessionaldicegame/LevelScreen.dart';
 
 class firstScreen extends StatefulWidget {
@@ -8,8 +9,11 @@ class firstScreen extends StatefulWidget {
 
 class _firstScreenState extends State<firstScreen> {
   @override
-  void changeScreen(){
+  void changeScreen( ){
     Navigator.push(context, MaterialPageRoute(builder: (context) => levelScreen()));
+  }
+  void changeScreen1( ){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => aboutus()));
   }
 
   @override
@@ -47,6 +51,7 @@ class _firstScreenState extends State<firstScreen> {
                 height: 10,
               ),
               RawMaterialButton(
+                onPressed: changeScreen1,
                 fillColor: Colors.blue,
                 child: Center(child: Text('About US', style: TextStyle(fontSize: 25 , fontWeight: FontWeight.bold, color: Colors.white ),)),
               ),
