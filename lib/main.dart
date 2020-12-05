@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:sessionaldicegame/firstScreen.dart';
 
 void main() { runApp(MyApp());}
@@ -38,10 +39,13 @@ class SplashScreenState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              CircleAvatar(
-                minRadius: 10,
-                maxRadius: 100,
-                backgroundImage: AssetImage("Images/pic.jpg"),
+              ElasticInDown(
+                
+                child: CircleAvatar(
+                  minRadius: 10,
+                  maxRadius: 100,
+                  backgroundImage: AssetImage("Images/pic.jpg"),
+                ),
               ),
               SizedBox(
                 height: 30,

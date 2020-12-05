@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'firstScreen.dart';
 import 'package:sessionaldicegame/easyLevel.dart';
 
 class levelScreen extends StatefulWidget {
@@ -10,9 +13,43 @@ class _levelScreenState extends State<levelScreen> {
   void easylevel(){
     Navigator.push(context, MaterialPageRoute(builder: (context) => simple()));
   }
+  void hardlevel(){
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => hardlevel()));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Select Level"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children:<Widget> [
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: Container(
+                color: Colors.blue,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 100.0),
+                  child: Text('Options', textAlign:TextAlign.left , style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),),
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('Home Screen', style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
+              onTap: () {
+                Navigator.pop(context, MaterialPageRoute(builder: (context) => firstScreen()));
+              },
+            ),
+            ListTile(
+              title: Text('Exit', style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
+              onTap: () {
+                exit(0);
+              },
+            )
+          ],
+        ),
+      ),
       backgroundColor: Colors.black87,
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sessionaldicegame/AboutUS.dart';
 import 'package:sessionaldicegame/LevelScreen.dart';
@@ -19,9 +22,38 @@ class _firstScreenState extends State<firstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Dice Rolling App"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children:<Widget> [
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+                child: Container(
+                  color: Colors.blue,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100.0),
+                    child: Text('Options', textAlign:TextAlign.left , style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),),
+                  ),
+                ),
+            ),
+            ListTile(
+              title: Text('Home Screen', style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
+              onTap: () {
+                Navigator.pop(context, MaterialPageRoute(builder: (context) => firstScreen()));
+              },
+            ),
+            ListTile(
+              title: Text('Exit', style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),),
+              onTap: () {
+                exit(0);
+              },
+            )
+          ],
+        ),
+      ),
       backgroundColor: Colors.black87,
-      body: Column(
-        children: <Widget>[
+      body:
           Column(
             children: <Widget>[
               Container(
@@ -57,8 +89,6 @@ class _firstScreenState extends State<firstScreen> {
               ),
             ],
           ),
-        ],
-      ),
     );
   }
 }
