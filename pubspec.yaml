@@ -31,6 +31,7 @@ dependencies:
   alert_dialog: ^0.1.0
   circular_profile_avatar: ^1.0.8
   animate_do: ^1.7.3
+  rflutter_alert: ^1.1.0
 
 dev_dependencies:
   flutter_test:

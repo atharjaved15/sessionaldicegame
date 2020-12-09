@@ -1,11 +1,11 @@
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'dart:io';
 import 'dart:math';
-
 import 'package:alert_dialog/alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'LevelScreen.dart';
 import 'firstScreen.dart';
+import 'choiceScreen.dart';
 
 class LevelHard extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _LevelHardState extends State<LevelHard> {
   int tries =5;
   bool mybool = true;
   int player;
-
+  choiceScreen option;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -64,8 +64,25 @@ class _LevelHardState extends State<LevelHard> {
                 SizedBox(
                   height: 70,
                 ),
-                mybool? DisplayImage() : userInput(),
-
+               // DisplayImage(),
+            Container(
+              child: GestureDetector(
+                onTap: changeScreen,
+                child: FlatButton(
+                  onPressed: () {
+                  setState(() {
+                    dice_cout = Random().nextInt(5) + 1;
+                    option.getOption(dice_cout);
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => choiceScreen()));
+                  });
+                },
+                  child: Image(
+                    height: 200,
+                    image: AssetImage('Images/dice$dice_cout.png'),
+                  ),
+                ),
+              ),
+            ),
                 /*Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -91,17 +108,21 @@ class _LevelHardState extends State<LevelHard> {
     _c = new TextEditingController();
     super.initState();
   }
+  void changeScreen(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> choiceScreen()));
+  }
 
-  Widget userInput () {
-    return new AlertDialog(
-      title: TextField(
-        decoration: new InputDecoration(hintText: "Update Info"),
+  /*Widget userInput () {
+    return  AlertDialog(
+      title: Text("Guess it Right") ,
+      content: TextField(
         controller: _c,
       ),
       actions: [
         FlatButton(
           child: Text("Save"),
           onPressed: () {
+            Navigator.pop(context);
             setState(() {
               uc = _c.text;
               user_pick = int.parse(uc);
@@ -146,7 +167,7 @@ class _LevelHardState extends State<LevelHard> {
                 );
 
               }
-              //Navigator.of(context, rootNavigator: true).pop(Dialog);
+              Navigator.of(context, rootNavigator: true).pop(context);
               mybool=true;
 
             });
@@ -154,13 +175,14 @@ class _LevelHardState extends State<LevelHard> {
         )
       ],
     );
-  }
+  }*/
   Widget DisplayImage() {
       return Container(
         child: FlatButton(onPressed: () {
           setState(() {
             dice_cout = Random().nextInt(5) + 1;
-            mybool = false;
+            option.getOption(dice_cout);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => choiceScreen()));
           });
         },
         child: Image(
